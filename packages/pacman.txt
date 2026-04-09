@@ -21,6 +21,8 @@ otf-font-awesome
 git
 stow
 zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
 eza
 fzf
 zoxide
