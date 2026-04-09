@@ -18,8 +18,13 @@ fi
 cd "${CONFIGS_DIR}"
 for dir in */; do
   pkg="${dir%/}"
-  echo "Linking ${pkg} into ~/.config/${pkg}"
-  stow -v -R -t "${HOME}/.config" "${pkg}"
+  if [[ "${pkg}" == "home" ]]; then
+    echo "Linking ${pkg} into ${HOME}"
+    stow -v -R -t "${HOME}" "${pkg}"
+  else
+    echo "Linking ${pkg} into ~/.config/${pkg}"
+    stow -v -R -t "${HOME}/.config" "${pkg}"
+  fi
 done
 
 echo "Config symlinks updated."

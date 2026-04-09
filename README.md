@@ -12,6 +12,7 @@ Everything is managed from this repository:
 - `packages/` package manifests
 - `scripts/` install/bootstrap scripts
 - `configs/` application config files mirrored into `~/.config`
+- `configs/home/` dotfiles mirrored into `~` (for example `.zshrc`)
 
 ## Quick Start
 
@@ -22,6 +23,8 @@ Everything is managed from this repository:
    - `bash scripts/install-packages.sh`
 3. Link configs:
    - `bash scripts/stow-configs.sh`
+4. Set zsh as default shell (optional):
+   - `bash scripts/setup-shell.sh`
 
 ## Notes
 
