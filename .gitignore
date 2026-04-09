@@ -4,3 +4,9 @@
 *.tmp
 *.bak
 *.log
+
+# Local wallpaper assets (do not push)
+wallpapers/*
+!wallpapers/.gitkeep
+!wallpapers/sources/
+!wallpapers/sources/*.txt

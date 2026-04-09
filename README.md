@@ -1,32 +1,62 @@
 # My Hyprland Dotfiles
 
-Minimal, reproducible Arch Linux + Hyprland setup.
+Minimal, reproducible Arch Linux + Hyprland setup with modular configs and helper scripts.
 
-Everything is managed from this repository:
-- package lists
-- install scripts
-- config files
+## What This Repo Manages
 
-## Structure
+- package manifests (`pacman` + AUR)
+- install/bootstrap scripts
+- Hyprland, Waybar, Wofi, Kitty, Dunst configs
+- shell setup (`zsh`, `eza`, `fzf`, `zoxide`, `fastfetch`)
+- wallpaper curation and rotation scripts
 
-- `packages/` package manifests
-- `scripts/` install/bootstrap scripts
-- `configs/` application config files mirrored into `~/.config`
-- `configs/home/` dotfiles mirrored into `~` (for example `.zshrc`)
+## Repository Structure
+
+- `configs/` symlinked to `~/.config` via stow
+- `configs/home/` symlinked to `~` (for dotfiles like `.zshrc`)
+- `packages/` package lists used by install scripts
+- `scripts/` bootstrap and utility scripts
+- `wallpapers/` local wallpaper library (images ignored by git)
 
 ## Quick Start
 
-1. Clone this repo:
-   - `git clone <your-repo-url> ~/my-dotfiles`
-   - `cd ~/my-dotfiles`
-2. Run the installer:
-   - `bash scripts/install-packages.sh`
-3. Link configs:
-   - `bash scripts/stow-configs.sh`
-4. Set zsh as default shell (optional):
-   - `bash scripts/setup-shell.sh`
+```bash
+git clone <your-repo-url> ~/my-dotfiles
+cd ~/my-dotfiles
+bash scripts/install-packages.sh
+bash scripts/stow-configs.sh
+bash scripts/setup-shell.sh   # optional (set zsh as default shell)
+```
+
+## Key Scripts
+
+- `scripts/bootstrap.sh` install + stow in one command
+- `scripts/install-packages.sh` install from `packages/pacman.txt` and `packages/aur.txt`
+- `scripts/stow-configs.sh` link configs into your home directory
+- `scripts/setup-shell.sh` set default shell to zsh
+- `scripts/import-dharmx-walls.sh` import curated wallpaper subsets
+
+## Wallpapers
+
+### Import curated wallpapers
+
+1. Edit categories in `wallpapers/sources/dharmx-categories.txt`
+2. Import a small subset:
+
+```bash
+PER_CATEGORY=4 bash scripts/import-dharmx-walls.sh
+```
+
+### Set and rotate wallpapers
+
+- Set a specific wallpaper:
+  - `~/.config/hypr/scripts/set-wallpaper.sh /absolute/path/to/image.jpg`
+- Set a random wallpaper:
+  - `~/.config/hypr/scripts/set-random-wallpaper.sh`
+- Keybind:
+  - `SUPER + SHIFT + W` picks a random wallpaper
 
 ## Notes
 
-- Scripts are idempotent where possible.
-- Keep changes in this repo, then push to GitHub.
+- Keep all changes in this repo, then commit/push.
+- Scripts are designed to be rerun safely.

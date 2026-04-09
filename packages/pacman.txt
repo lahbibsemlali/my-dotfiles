@@ -21,3 +21,5 @@ eza
 fzf
 zoxide
 bat
+libnotify
+fastfetch
