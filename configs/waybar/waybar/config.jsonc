@@ -5,7 +5,6 @@
     "height": 32,
     "spacing": 6,
     "on-sigusr2": "show",
-
     "modules-left": [
         "custom/power",
         "custom/menu",
@@ -24,7 +23,6 @@
         "custom/updates",
         "clock"
     ],
-
     "hyprland/window": {
         "format": "{title}",
         "max-length": 40,
@@ -33,29 +31,28 @@
         },
         "separate-outputs": true
     },
-
     "hyprland/submap": {
         "format": "<span style=\"italic\">{}</span>"
     },
-
     "tray": {
         "icon-size": 18,
         "spacing": 5,
         "show-passive-items": true
     },
-
     "clock": {
         "format": "{:%a %d %b %Y | %H:%M}",
         "tooltip-format": "<big><tt><small>{calendar}</small></tt></big>"
     },
-
     "temperature": {
         "critical-threshold": 80,
         "format": " {temperatureC}°C {icon}",
-        "format-icons": ["", "", ""],
+        "format-icons": [
+            "",
+            "",
+            ""
+        ],
         "on-click": "$HOME/.config/waybar/scripts/sensor.sh"
     },
-
     "battery": {
         "states": {
             "good": 80,
@@ -67,9 +64,14 @@
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
-
     "pulseaudio": {
         "on-click": "pavucontrol",
         "on-click-right": "$HOME/.config/waybar/scripts/alsamixer.sh",
@@ -86,10 +88,13 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         }
     },
-
     "bluetooth": {
         "format": "",
         "format-off": "",
@@ -102,7 +107,6 @@
         "on-click": "kitty -e bluetoothctl",
         "on-click-right": "$HOME/.config/hypr/scripts/toggle_bluetooth.sh"
     },
-
     "network": {
         "format-wifi": "{signalStrength}% ",
         "format-ethernet": "󰖟",
@@ -112,10 +116,13 @@
         "on-click-right": "$HOME/.config/waybar/scripts/nmtui.sh",
         "on-click": "$HOME/.config/waybar/scripts/nmtui-connect.sh"
     },
-
     "backlight": {
         "format": "{icon} {percent}%",
-        "format-icons": ["", "", ""],
+        "format-icons": [
+            "",
+            "",
+            ""
+        ],
         "menu": "on-click-right",
         "menu-file": "$HOME/.config/waybar/brightness_menu.xml",
         "menu-actions": {
@@ -126,7 +133,6 @@
             "set-to-10": "$HOME/.config/waybar/scripts/backlight.sh 10"
         }
     },
-
     "custom/updates": {
         "format": " {}",
         "interval": 3600,
@@ -134,7 +140,6 @@
         "exec": "$HOME/.config/waybar/scripts/pacman_updates.sh",
         "on-click": "kitty -e bash -lc 'checkupdates 2>/dev/null | sed -n 1,200p; echo; read -r -n1'"
     },
-
     "custom/power": {
         "format": " ⏻ ",
         "tooltip": false,
@@ -149,10 +154,11 @@
             "logout": "~/.config/waybar/scripts/power_action.sh logout"
         }
     },
-
     "custom/menu": {
         "format": "{icon} Menu",
-        "format-icons": [""],
+        "format-icons": [
+            ""
+        ],
         "tooltip": "Open Menu",
         "on-click": "wofi --show drun --style ~/.config/wofi/style.css",
         "menu": "on-click-right",
