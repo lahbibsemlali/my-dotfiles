@@ -1,0 +1,167 @@
+// -*- mode: jsonc -*-
+// Trimmed for this dotfiles repo: modules only reference scripts/binaries we ship or common Arch packages.
+{
+    "layer": "top",
+    "height": 32,
+    "spacing": 6,
+    "on-sigusr2": "show",
+
+    "modules-left": [
+        "custom/power",
+        "custom/menu",
+        "tray",
+        "hyprland/workspaces",
+        "hyprland/submap"
+    ],
+    "modules-right": [
+        "hyprland/window",
+        "pulseaudio",
+        "backlight",
+        "temperature",
+        "battery",
+        "network",
+        "bluetooth",
+        "custom/updates",
+        "clock"
+    ],
+
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 40,
+        "rewrite": {
+            "": "Hyprland"
+        },
+        "separate-outputs": true
+    },
+
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 5,
+        "show-passive-items": true
+    },
+
+    "clock": {
+        "format": "{:%a %d %b %Y | %H:%M}",
+        "tooltip-format": "<big><tt><small>{calendar}</small></tt></big>"
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": " {temperatureC}°C {icon}",
+        "format-icons": ["", "", ""],
+        "on-click": "$HOME/.config/waybar/scripts/sensor.sh"
+    },
+
+    "battery": {
+        "states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "pulseaudio": {
+        "on-click": "pavucontrol",
+        "on-click-right": "$HOME/.config/waybar/scripts/alsamixer.sh",
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+
+    "bluetooth": {
+        "format": "",
+        "format-off": "",
+        "format-on": "",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip": true,
+        "tooltip-format": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: {status}",
+        "tooltip-format-connected": "Controller: {controller_alias}\nAddress: {controller_address}\nConnected: {device_alias} ({device_address})\nBattery: {device_battery_percentage}%",
+        "on-click": "kitty -e bluetoothctl",
+        "on-click-right": "$HOME/.config/hypr/scripts/toggle_bluetooth.sh"
+    },
+
+    "network": {
+        "format-wifi": "{signalStrength}% ",
+        "format-ethernet": "󰖟",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "⚠",
+        "on-click-right": "$HOME/.config/waybar/scripts/nmtui.sh",
+        "on-click": "$HOME/.config/waybar/scripts/nmtui-connect.sh"
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", ""],
+        "menu": "on-click-right",
+        "menu-file": "$HOME/.config/waybar/brightness_menu.xml",
+        "menu-actions": {
+            "set-to-100": "$HOME/.config/waybar/scripts/backlight.sh 100",
+            "set-to-75": "$HOME/.config/waybar/scripts/backlight.sh 75",
+            "set-to-50": "$HOME/.config/waybar/scripts/backlight.sh 50",
+            "set-to-25": "$HOME/.config/waybar/scripts/backlight.sh 25",
+            "set-to-10": "$HOME/.config/waybar/scripts/backlight.sh 10"
+        }
+    },
+
+    "custom/updates": {
+        "format": " {}",
+        "interval": 3600,
+        "exec-if": "which checkupdates",
+        "exec": "$HOME/.config/waybar/scripts/pacman_updates.sh",
+        "on-click": "kitty -e bash -lc 'checkupdates 2>/dev/null | sed -n 1,200p; echo; read -r -n1'"
+    },
+
+    "custom/power": {
+        "format": " ⏻ ",
+        "tooltip": false,
+        "on-click": "wlogout --protocol layer-shell",
+        "menu": "on-click-right",
+        "menu-file": "$HOME/.config/waybar/power_menu.xml",
+        "menu-actions": {
+            "shutdown": "~/.config/waybar/scripts/power_action.sh shutdown",
+            "reboot": "~/.config/waybar/scripts/power_action.sh reboot",
+            "suspend": "~/.config/waybar/scripts/power_action.sh suspend",
+            "hibernate": "~/.config/waybar/scripts/power_action.sh hibernate",
+            "logout": "~/.config/waybar/scripts/power_action.sh logout"
+        }
+    },
+
+    "custom/menu": {
+        "format": "{icon} Menu",
+        "format-icons": [""],
+        "tooltip": "Open Menu",
+        "on-click": "wofi --show drun --style ~/.config/wofi/style.css",
+        "menu": "on-click-right",
+        "menu-file": "$HOME/.config/waybar/options_menu.xml",
+        "menu-actions": {
+            "keybinds": "~/.config/waybar/scripts/keybinds.py",
+            "drun": "wofi --show drun --style ~/.config/wofi/style.css",
+            "open_keybinds": "kitty -t Keybinds -e nvim $HOME/.config/hypr/keybinds.conf",
+            "snapshot": "$HOME/.config/waybar/scripts/snapshot.sh"
+        }
+    }
+}

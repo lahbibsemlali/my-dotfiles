@@ -17,6 +17,7 @@ ttf-jetbrains-mono-nerd
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
+noto-fonts-arabic
 otf-font-awesome
 git
 stow
@@ -30,3 +31,5 @@ bat
 libnotify
 fastfetch
 btop
+pacman-contrib
+alsa-utils

@@ -1,3 +1,4 @@
 hyprpaper
 waybar-hyprland-git
 google-chrome
+wlogout

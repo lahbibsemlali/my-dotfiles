@@ -1,73 +1,248 @@
+@define-color primary #96d8ff;
+@define-color background rgba(21, 18, 27, 0.8);
+
+/* All Modules */
 * {
-  border: none;
-  border-radius: 10px;
-  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Noto Sans", "Noto Sans CJK SC", "Noto Color Emoji", sans-serif;
-  font-size: 14px;
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: bold;
+  font-size: 13px;
   min-height: 0;
+  background: rgba(21, 18, 27, 0);
 }
 
 window#waybar {
-  background: transparent;
-  color: #dbe2ff;
+  color: @primary;
+  min-height: 0;
 }
 
+tooltip {
+  background: @background;
+  border-radius: 10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: #11111b;
+}
+
+/* Dropdown menus */
+menu {
+  background: @background;
+  border: 1px solid @primary;
+  border-radius: 10px;
+}
+
+menu menuitem {
+  background: transparent;
+}
+
+menu menuitem:hover {
+  background-color: rgba(150, 216, 255, 0.1);
+  border-color: @primary;
+}
+
+/* Workspaces */
 #workspaces button {
-  padding: 0 10px;
-  margin: 6px 4px;
-  color: #9aa3c8;
-  background: #171a2d;
+  color: #585858;
 }
 
 #workspaces button.active {
-  color: #0f1221;
-  background: #b08cff;
+  color: @primary;
+}
+
+#workspaces button.urgent {
+  color: #11111b;
+  background: #a6e3a1;
+  border-radius: 10px;
 }
 
 #workspaces button:hover {
-  background: #232845;
-  color: #dbe2ff;
+  background: #010116;
+  color: #cdd6f4;
+  border-color: @primary;
+  border-radius: 10px;
 }
 
-#clock,
+/* Bar modules */
+#window,
+#workspaces,
+#custom-clipboard,
+#menu,
+#submap,
+#idle_inhibitor,
+#pulseaudio,
+#battery,
+#bluetooth,
+#network,
+#power-profiles-daemon,
 #cpu,
 #memory,
+#temperature,
+#keyboard-state,
+#clock,
+#language,
+#custom-input-method,
+#tray,
 #backlight,
-#battery,
-#network,
-#pulseaudio,
-#tray {
-  margin: 6px 4px;
-  padding: 0 12px;
-  background: #171a2d;
-  color: #dbe2ff;
+#custom-brightness,
+#custom-updates,
+#custom-notification,
+#custom-power,
+#custom-weather,
+#custom-menu,
+#custom-razerbattery,
+#custom-vpn,
+#custom-lmstudio,
+#wlr-taskbar {
+  background: @background;
+  font-family: "JetBrainsMono Nerd Font";
+  opacity: 1.0;
+  padding: 0px 8px;
+  margin: 0px 0px;
+  margin-top: 2px;
+  border: 0.5px solid @primary;
+  border-radius: 8px;
+}
+
+/* Individual modules */
+#submap {
+  background-color: rgba(10, 10, 10, 0.8);
+  color: rgba(152, 239, 106, 1);
+}
+
+#menu {
+  background-color: @background;
+  border: 1px solid @primary;
+  border-radius: 10px;
+}
+
+#battery {
+  color: #a8ff96;
+  padding-right: 15px;
+}
+
+#power-profiles-daemon.performance {
+  color: @primary;
+}
+
+#power-profiles-daemon.balanced {
+  color: #9ca6ff;
+}
+
+#power-profiles-daemon.power-saver {
+  color: #9a7eff;
+}
+
+#temperature.critical {
+  color: #ff5874;
 }
 
 #clock {
-  background: #b08cff;
-  color: #0f1221;
-  font-weight: 700;
+  margin-right: 0px;
 }
 
-#backlight {
-  color: #f5b97f;
+#language {
+  margin-left: 0px;
+  margin-right: 5px;
 }
 
-#pulseaudio {
-  color: #7fd3ff;
+#custom-input-method {
+  margin-left: 0px;
+  margin-right: 5px;
+}
+
+#custom-clipboard {
+  padding-left: 11px;
+  padding-right: 12px;
+}
+
+#custom-updates {
+  padding-right: 15px;
+}
+
+#custom-notification {
+  font-family: "NotoSansMono Nerd Font";
+  font-size: 13px;
+  padding-right: 15px;
+}
+
+#custom-power {
+  margin-left: 5px;
+  padding-left: 5px;
+}
+
+#custom-razerbattery {
+  padding-right: 0px;
 }
 
 #network {
-  color: #8bd5ff;
+  padding-right: 14px;
 }
 
-#battery.charging {
-  color: #a6e3a1;
+#custom-vpn {
+  padding-right: 14px;
 }
 
-#battery.warning:not(.charging) {
-  color: #f9e2af;
+#custom-vpn.vpn-up {
+  color: #a8ff96;
 }
 
-#battery.critical:not(.charging) {
-  color: #f38ba8;
+#custom-vpn.vpn-down {
+  color: #585858;
+}
+
+/* Not Used CSS Modues, defined with other Modules above */
+#tray {
+  /* Add unique CSS Options */
+}
+
+#workspaces {
+  /* Add unique CSS Options */
+}
+
+#workspaces button.focused {
+  /* Add unique CSS Options */
+}
+
+#custom-weather {
+  /* Add unique CSS Options */
+}
+
+#custom-menu {
+  /* Add unique CSS Options */
+}
+
+#keyboard-state {
+  /* Add unique CSS Options */
+}
+
+#temperature {
+  /* Add unique CSS Options */
+}
+
+#power-profiles-daemon {
+  /* Add unique CSS Options */
+}
+
+#pulseaudio,
+#pulseaudio.microphone {
+  /* Add unique CSS Options */
+}
+
+#custom-brightness {
+  /* Add unique CSS Options */
+}
+
+#bluetooth {
+  /* Add unique CSS Options */
+}
+
+#cpu {
+  /* Add unique CSS Options */
+}
+
+#memory {
+  /* Add unique CSS Options */
+}
+
+#idle_inhibitor {
+  /* Add unique CSS Options */
 }

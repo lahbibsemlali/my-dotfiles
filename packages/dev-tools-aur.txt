@@ -1,0 +1,4 @@
+# Optional AUR-only dev tools (install yay first). Uncomment or add lines as needed.
+# visual-studio-code-bin
+# nvm
+# lazydocker

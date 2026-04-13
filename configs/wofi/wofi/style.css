@@ -1,51 +1,86 @@
+/* Matches waybar: dark base + cyan accent, soft selection (no neon slab) */
 * {
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 15px;
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 window {
-  margin: 0px;
-  border: 2px solid #b08cff;
-  border-radius: 8px;
-  background-color: #0f1221;
-}
-
-#input {
-  margin: 10px;
-  padding: 8px 10px;
-  border: none;
-  border-radius: 6px;
-  color: #dbe2ff;
-  background-color: #171a2d;
-}
-
-#inner-box {
-  margin: 0 10px 10px 10px;
-  border: none;
-  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(150, 216, 255, 0.35);
+  border-radius: 12px;
+  background-color: rgba(18, 16, 24, 0.96);
 }
 
 #outer-box {
   margin: 0;
+  padding: 10px;
   border: none;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+#input {
+  margin: 0 0 10px 0;
+  padding: 10px 14px 10px 16px;
+  border: 1px solid rgba(150, 216, 255, 0.22);
+  border-radius: 10px;
+  color: #e8eef4;
+  background-color: rgba(26, 23, 36, 0.95);
+  caret-color: #96d8ff;
+  outline: none;
+}
+
+#input:focus {
+  border-color: rgba(150, 216, 255, 0.45);
+  background-color: rgba(30, 26, 42, 0.98);
+}
+
+#inner-box {
+  margin: 0;
+  padding: 4px 2px;
+  border: none;
+  border-radius: 0;
+  color: #b8c0cc;
   background-color: transparent;
 }
 
 #scroll {
   margin: 0;
   border: none;
+  border-radius: 8px;
+}
+
+#img {
+  margin: 0 12px 0 6px;
+  padding: 2px;
 }
 
 #text {
-  margin: 4px;
-  color: #dbe2ff;
+  margin: 0;
+  padding: 6px 8px 6px 0;
+  color: #c8d0da;
+}
+
+#text:selected {
+  color: #96d8ff;
+  background-color: transparent;
 }
 
 #entry {
-  padding: 6px;
-  border-radius: 6px;
+  margin: 2px 4px;
+  padding: 2px 6px;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
 }
 
 #entry:selected {
-  background-color: #232845;
+  background-color: rgba(150, 216, 255, 0.14);
+  outline: none;
+}
+
+#img:selected {
+  background-color: transparent;
 }

@@ -1,0 +1,25 @@
+# Core build tools (needed for many AUR builds and native addons)
+base-devel
+
+# Containers (docker-compose provides the compose CLI; use `docker compose` if your docker build ships the plugin)
+docker
+docker-compose
+
+# Node / JS
+nodejs
+npm
+pnpm
+
+# Languages & common CLI helpers
+neovim
+git
+ripgrep
+fd
+tree-sitter-cli
+unzip
+python
+python-pip
+python-pipx
+python-argcomplete
+github-cli
+jq

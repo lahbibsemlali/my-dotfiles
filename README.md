@@ -10,7 +10,7 @@ Minimal, reproducible Arch Linux + Hyprland setup with modular configs and helpe
 
 - package manifests (`pacman` + AUR)
 - install/bootstrap scripts
-- Hyprland, Waybar, Wofi, Kitty, Dunst configs
+- Hyprland, Waybar, Wofi, Kitty, Dunst, Cursor configs
 - shell setup (`zsh`, `eza`, `fzf`, `zoxide`, `fastfetch`)
 - wallpaper curation and rotation scripts
 
@@ -38,6 +38,7 @@ bash scripts/setup-shell.sh   # optional (set zsh as default shell)
 - `scripts/install-packages.sh` install from `packages/pacman.txt` and `packages/aur.txt`
 - `scripts/stow-configs.sh` link configs into your home directory
 - `scripts/setup-shell.sh` set default shell to zsh
+- `scripts/install-dev-tools.sh` install Docker/Node/Python/neovim + kickstart.nvim bootstrap
 - `scripts/import-dharmx-walls.sh` import curated wallpaper subsets
 
 ## Wallpapers
@@ -64,3 +65,7 @@ PER_CATEGORY=4 bash scripts/import-dharmx-walls.sh
 
 - Keep all changes in this repo, then commit/push.
 - Scripts are designed to be rerun safely.
+
+## Credits
+
+Waybar configuration in `configs/waybar/waybar/` (including `config.jsonc`, `style.css`, XML menus, and `scripts/`) comes from [Firstp1ck/Hyprland-Simple-Setup](https://github.com/Firstp1ck/Hyprland-Simple-Setup) (GPL-3.0). That project expects a larger stack (extra Hyprland scripts, optional tools such as `wlogout`, SwayNC, `waybar-module-pacman-updates`, Razer/LM Studio helpers, etc.); adjust paths and install missing pieces if something does not load.
