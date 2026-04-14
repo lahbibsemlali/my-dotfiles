@@ -12,6 +12,9 @@ playerctl
 pavucontrol
 network-manager-applet
 polkit-kde-agent
+bluez
+bluez-utils
+blueman
 xdg-desktop-portal-hyprland
 ttf-jetbrains-mono-nerd
 noto-fonts
