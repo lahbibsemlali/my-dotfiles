@@ -4,7 +4,11 @@ Minimal, reproducible Arch Linux + Hyprland setup with modular configs and helpe
 
 ## Preview
 
-![Desktop Preview](assets/desktop-preview.png)
+![Wofi Launcher](assets/wofi-preview.png)
+*Wofi application launcher with Waybar*
+
+![Btop System Monitor](assets/btop-preview.png)
+*Btop++ system monitor with resource graphs*
 
 ## What This Repo Manages
 
