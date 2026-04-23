@@ -4,7 +4,7 @@
     width = (220, 280)
     height = (0, 80)
     origin = top-right
-    offset = (10, 16)
+    offset = (10, 46) # Lowered to accommodate waybar
     scale = 0
     notification_limit = 6
 
@@ -15,21 +15,21 @@
     progress_bar_max_width = 220
     progress_bar_corner_radius = 5
 
-    transparency = 0
-    separator_height = 0
-    padding = 10
-    horizontal_padding = 10
-    text_icon_padding = 8
+    transparency = 15
+    separator_height = 1
+    padding = 12
+    horizontal_padding = 12
+    text_icon_padding = 12
     frame_width = 1
-    frame_color = "#88c0d0"
-    corner_radius = 8
+    frame_color = "#313244"
+    corner_radius = 12
 
-    gap_size = 6
+    gap_size = 8
     separator_color = frame
     sort = yes
     idle_threshold = 120
     font = JetBrainsMono Nerd Font 12
-    line_height = 0
+    line_height = 2
     markup = full
     format = "<b>%s</b>\n%b"
     alignment = left
@@ -43,8 +43,8 @@
     enable_recursive_icon_lookup = true
     icon_theme = Adwaita
     icon_position = left
-    min_icon_size = 20
-    max_icon_size = 28
+    min_icon_size = 24
+    max_icon_size = 32
     sticky_history = yes
     history_length = 20
     dmenu = /usr/bin/wofi -d -p dunst:
@@ -58,23 +58,25 @@
 
 [urgency_low]
     timeout = 3
-    background = "#1f2430"
-    foreground = "#dce3ef"
+    background = "#1e1e2e"
+    foreground = "#cdd6f4"
+    frame_color = "#313244"
 
 [urgency_normal]
     timeout = 4
-    background = "#1f2430"
-    foreground = "#dce3ef"
+    background = "#1e1e2e"
+    foreground = "#cdd6f4"
+    frame_color = "#313244"
 
 [urgency_critical]
     timeout = 0
-    background = "#2a1014"
+    background = "#1e1e2e"
     foreground = "#f38ba8"
     frame_color = "#f38ba8"
 
 # Nicer style for volume and brightness popups.
 [volume_brightness]
     appname = "volume|brightness"
-    highlight = "#88c0d0"
+    highlight = "#89b4fa"
     timeout = 1
     format = "%s  %p"

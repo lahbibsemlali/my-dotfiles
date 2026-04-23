@@ -1,6 +1,7 @@
 # My Hyprland Dotfiles
 
 Minimal, reproducible Arch Linux + Hyprland setup with modular configs and helper scripts.
+Refactored for maintainability, fast startup, and GNU Stow compatibility.
 
 ## Preview
 
@@ -12,15 +13,15 @@ Minimal, reproducible Arch Linux + Hyprland setup with modular configs and helpe
 
 ## What This Repo Manages
 
-- package manifests (`pacman` + AUR)
-- install/bootstrap scripts
-- Hyprland, Waybar, Wofi, Kitty, Dunst, Cursor configs
-- shell setup (`zsh`, `eza`, `fzf`, `zoxide`, `fastfetch`)
-- wallpaper curation and rotation scripts
+- Package manifests (`pacman` + AUR)
+- Install/bootstrap scripts (Idempotent and safe)
+- Hyprland, Waybar, Wofi, Kitty, Dunst, Cursor configs (Modularized)
+- Shell setup (`zsh`, `eza`, `fzf`, `zoxide`, `fastfetch`) (Split into aliases, exports, options, plugins)
+- Wallpaper curation and rotation scripts
 
 ## Repository Structure
 
-- `configs/` symlinked to `~/.config` via stow
+- `configs/` symlinked to `~/.config` via stow (e.g. `configs/hypr/hypr` -> `~/.config/hypr`)
 - `configs/home/` symlinked to `~` (for dotfiles like `.zshrc`)
 - `packages/` package lists used by install scripts
 - `scripts/` bootstrap and utility scripts
@@ -31,19 +32,17 @@ Minimal, reproducible Arch Linux + Hyprland setup with modular configs and helpe
 ```bash
 git clone <your-repo-url> ~/my-dotfiles
 cd ~/my-dotfiles
-bash scripts/install-packages.sh
-bash scripts/stow-configs.sh
-bash scripts/setup-shell.sh   # optional (set zsh as default shell)
+bash scripts/bootstrap.sh
 ```
 
 ## Key Scripts
 
-- `scripts/bootstrap.sh` install + stow in one command
+- `scripts/bootstrap.sh` full system setup: packages + stow configs + shell setup.
 - `scripts/install-packages.sh` install from `packages/pacman.txt` and `packages/aur.txt`
-- `scripts/stow-configs.sh` link configs into your home directory
-- `scripts/setup-shell.sh` set default shell to zsh
-- `scripts/install-dev-tools.sh` install Docker/Node/Python/neovim + kickstart.nvim bootstrap
-- `scripts/import-dharmx-walls.sh` import curated wallpaper subsets
+- `scripts/stow-configs.sh` securely link configs into your home directory (creates base dirs automatically).
+- `scripts/setup-shell.sh` set default shell to zsh safely.
+- `scripts/install-dev-tools.sh` install Docker/Node/Python/neovim + kickstart.nvim bootstrap.
+- `scripts/import-dharmx-walls.sh` import curated wallpaper subsets.
 
 ## Wallpapers
 
@@ -67,8 +66,8 @@ PER_CATEGORY=4 bash scripts/import-dharmx-walls.sh
 
 ## Notes
 
-- Keep all changes in this repo, then commit/push.
-- Scripts are designed to be rerun safely.
+- Keep all changes in this repo, then run `scripts/stow-configs.sh`.
+- Scripts are designed to be idempotent and run safely multiple times.
 
 ## Credits
 

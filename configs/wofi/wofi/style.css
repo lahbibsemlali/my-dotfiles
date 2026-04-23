@@ -1,54 +1,51 @@
-/* Matches waybar: dark base + cyan accent, soft selection (no neon slab) */
 * {
   font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
   font-size: 14px;
   font-weight: 500;
+  border: none;
+  border-radius: 0;
 }
 
 window {
   margin: 0;
   padding: 0;
-  border: 1px solid rgba(150, 216, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  background-color: rgba(18, 16, 24, 0.96);
+  background-color: rgba(30, 30, 46, 0.85); /* Translucent mac-like base */
+  color: #cdd6f4;
 }
 
 #outer-box {
   margin: 0;
   padding: 10px;
-  border: none;
-  border-radius: 0;
   background-color: transparent;
 }
 
 #input {
   margin: 0 0 10px 0;
   padding: 10px 14px 10px 16px;
-  border: 1px solid rgba(150, 216, 255, 0.22);
-  border-radius: 10px;
-  color: #e8eef4;
-  background-color: rgba(26, 23, 36, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #cdd6f4;
+  background-color: rgba(49, 50, 68, 0.6);
   caret-color: #96d8ff;
   outline: none;
 }
 
 #input:focus {
-  border-color: rgba(150, 216, 255, 0.45);
-  background-color: rgba(30, 26, 42, 0.98);
+  border-color: #96d8ff;
+  background-color: rgba(49, 50, 68, 0.8);
 }
 
 #inner-box {
   margin: 0;
   padding: 4px 2px;
-  border: none;
-  border-radius: 0;
-  color: #b8c0cc;
+  color: #bac2de;
   background-color: transparent;
 }
 
 #scroll {
   margin: 0;
-  border: none;
   border-radius: 8px;
 }
 
@@ -60,24 +57,23 @@ window {
 #text {
   margin: 0;
   padding: 6px 8px 6px 0;
-  color: #c8d0da;
+  color: #bac2de;
 }
 
 #text:selected {
-  color: #96d8ff;
+  color: #cdd6f4;
   background-color: transparent;
 }
 
 #entry {
   margin: 2px 4px;
   padding: 2px 6px;
-  border: none;
   border-radius: 8px;
   background-color: transparent;
 }
 
 #entry:selected {
-  background-color: rgba(150, 216, 255, 0.14);
+  background-color: rgba(255, 255, 255, 0.1); /* Soft highlight */
   outline: none;
 }
 

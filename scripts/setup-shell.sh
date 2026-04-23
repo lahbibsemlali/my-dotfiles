@@ -9,7 +9,11 @@ fi
 # chsh only accepts shells listed in /etc/shells.
 # Prefer the first zsh entry from there; fall back to command -v.
 if [[ -r /etc/shells ]]; then
-  ZSH_PATH="$(rg '/zsh$' /etc/shells -m 1 || true)"
+  GREP_CMD="grep"
+  if command -v rg >/dev/null 2>&1; then
+    GREP_CMD="rg"
+  fi
+  ZSH_PATH="$(${GREP_CMD} '/zsh$' /etc/shells -m 1 || true)"
 else
   ZSH_PATH=""
 fi

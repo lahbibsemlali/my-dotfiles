@@ -15,6 +15,10 @@ if [[ ! -d "${CONFIGS_DIR}" ]]; then
   exit 1
 fi
 
+# Ensure base directories exist before stowing
+mkdir -p "${HOME}/.config"
+mkdir -p "${HOME}/.local/bin"
+
 cd "${CONFIGS_DIR}"
 for dir in */; do
   pkg="${dir%/}"
@@ -22,7 +26,7 @@ for dir in */; do
     echo "Linking ${pkg} into ${HOME}"
     stow -v -R -t "${HOME}" "${pkg}"
   else
-    echo "Linking ${pkg} into ~/.config/${pkg}"
+    echo "Linking ${pkg} into ~/.config"
     stow -v -R -t "${HOME}/.config" "${pkg}"
   fi
 done

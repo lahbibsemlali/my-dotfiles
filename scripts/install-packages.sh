@@ -17,7 +17,13 @@ if [[ ! -f "${PACMAN_FILE}" ]]; then
   exit 1
 fi
 
-mapfile -t PACMAN_PKGS < <(rg -v '^\s*(#|$)' "${PACMAN_FILE}" || true)
+# Fallback to standard grep if rg is not installed
+GREP_CMD="grep"
+if command -v rg >/dev/null 2>&1; then
+  GREP_CMD="rg"
+fi
+
+mapfile -t PACMAN_PKGS < <(${GREP_CMD} -v '^\s*(#|$)' "${PACMAN_FILE}" || true)
 
 if [[ "${#PACMAN_PKGS[@]}" -gt 0 ]]; then
   echo "Installing pacman packages..."
@@ -27,7 +33,7 @@ else
 fi
 
 if [[ -f "${AUR_FILE}" ]]; then
-  mapfile -t AUR_PKGS < <(rg -v '^\s*(#|$)' "${AUR_FILE}" || true)
+  mapfile -t AUR_PKGS < <(${GREP_CMD} -v '^\s*(#|$)' "${AUR_FILE}" || true)
 else
   AUR_PKGS=()
 fi

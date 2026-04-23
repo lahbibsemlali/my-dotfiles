@@ -1,0 +1,5 @@
+alias ls='eza --icons'
+alias ll='eza -lah --icons --git'
+alias lt='eza -T --level=2 --icons'
+alias cat='bat --style=plain'
+alias grep='rg'

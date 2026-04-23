@@ -1,84 +1,66 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "type": "file",
-    "source": "~/.config/fastfetch/logo.txt",
-    "width": 12,
-    "height": 10,
+    "type": "small",
+    "color": {
+      "1": "blue"
+    },
     "padding": {
       "top": 1,
-      "right": 2
+      "right": 6
     }
   },
   "display": {
-    "separator": "  ",
-    "brightColor": false,
+    "separator": "   ",
     "color": {
-      "keys": "#8bd5ff",
-      "title": "#b7c0de",
-      "output": "#aeb7d6",
-      "separator": "#6f7aa3"
-    },
-    "key": {
-      "width": 4
+      "keys": "blue"
     }
   },
   "modules": [
+    "break",
     {
-      "type": "custom",
-      "format": "┌────────────────── Software Information ──────────────────┐"
+      "type": "title",
+      "color": {
+        "user": "green",
+        "at": "white",
+        "host": "blue"
+      }
     },
+    "break",
     {
       "type": "os",
-      "key": "⌂ "
-    },
-    {
-      "type": "packages",
-      "key": "◎ "
+      "key": "  OS"
     },
     {
       "type": "wm",
-      "key": "❯ "
+      "key": "  WM"
     },
     {
       "type": "terminal",
-      "key": "⌨ "
+      "key": "  Term"
     },
     {
       "type": "shell",
-      "key": "› "
+      "key": "  Shell"
     },
     {
-      "type": "custom",
-      "format": "├────────────────── Hardware Information ──────────────────┤"
+      "type": "packages",
+      "key": "󰏗  Pkgs"
     },
+    "break",
     {
       "type": "cpu",
-      "key": "▪ "
-    },
-    {
-      "type": "gpu",
-      "key": "▫ "
-    },
-    {
-      "type": "display",
-      "key": "□ "
+      "key": "  CPU"
     },
     {
       "type": "memory",
-      "key": "◌ "
+      "key": "  RAM"
     },
-    {
-      "type": "disk",
-      "key": "◍ "
-    },
+    "break",
     {
       "type": "custom",
-      "format": "└───────────────────────────────────────────────────────────┘"
+      "format": "\u001b[34m─────────────── \u001b[36m─────────────── \u001b[34m───────────────"
     },
-    {
-      "type": "custom",
-      "format": "   ᗧ ᗧ ᗧ ᗧ ᗧ ᗧ ᗧ ᗧ ᗧ      ᗧ ᗧ ᗧ ᗧ ᗧ ᗧ ᗧ ᗧ ᗧ"
-    }
+    "break"
   ]
 }

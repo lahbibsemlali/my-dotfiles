@@ -19,7 +19,12 @@ if [[ ! -f "${DEV_PACMAN}" ]]; then
   exit 1
 fi
 
-mapfile -t DEV_PKGS < <(rg -v '^\s*(#|$)' "${DEV_PACMAN}" || true)
+GREP_CMD="grep"
+if command -v rg >/dev/null 2>&1; then
+  GREP_CMD="rg"
+fi
+
+mapfile -t DEV_PKGS < <(${GREP_CMD} -v '^\s*(#|$)' "${DEV_PACMAN}" || true)
 
 if [[ "${#DEV_PKGS[@]}" -eq 0 ]]; then
   echo "No packages listed in ${DEV_PACMAN}"
@@ -29,8 +34,13 @@ fi
 echo "Installing dev packages (pacman)..."
 sudo pacman -S --needed --noconfirm "${DEV_PKGS[@]}"
 
+GREP_CMD="grep"
+if command -v rg >/dev/null 2>&1; then
+  GREP_CMD="rg"
+fi
+
 if [[ -f "${DEV_AUR}" ]]; then
-  mapfile -t DEV_AUR_PKGS < <(rg -v '^\s*(#|$)' "${DEV_AUR}" || true)
+  mapfile -t DEV_AUR_PKGS < <(${GREP_CMD} -v '^\s*(#|$)' "${DEV_AUR}" || true)
 else
   DEV_AUR_PKGS=()
 fi

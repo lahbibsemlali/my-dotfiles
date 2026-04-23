@@ -1,248 +1,93 @@
 @define-color primary #96d8ff;
-@define-color background rgba(21, 18, 27, 0.8);
+@define-color background rgba(30, 30, 46, 0.75); /* Mac-like dark translucency */
 
-/* All Modules */
 * {
   font-family: "JetBrainsMono Nerd Font";
-  font-weight: bold;
-  font-size: 13px;
+  font-weight: 500;
+  font-size: 14px;
   min-height: 0;
-  background: rgba(21, 18, 27, 0);
+  border: none;
+  border-radius: 0;
 }
 
 window#waybar {
-  color: @primary;
-  min-height: 0;
+  background: @background;
+  color: #cdd6f4;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle bottom border */
 }
 
 tooltip {
-  background: @background;
-  border-radius: 10px;
-  border-width: 10px;
-  border-style: solid;
-  border-color: #11111b;
+  background: rgba(30, 30, 46, 0.95);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Dropdown menus */
 menu {
-  background: @background;
-  border: 1px solid @primary;
-  border-radius: 10px;
+  background: rgba(30, 30, 46, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
 }
-
 menu menuitem {
   background: transparent;
 }
-
 menu menuitem:hover {
-  background-color: rgba(150, 216, 255, 0.1);
-  border-color: @primary;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Workspaces */
+/* Module containers */
+#workspaces,
+#window,
+#tray,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#bluetooth,
+#backlight,
+#custom-menu,
+#custom-power,
+#custom-updates {
+  background: transparent;
+  padding: 0 10px;
+  margin: 0;
+  color: #cdd6f4;
+}
+
+/* Specific module tweaks */
+#custom-menu {
+  font-size: 18px; /* Slightly larger logo */
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#window {
+  font-weight: bold;
+}
+
 #workspaces button {
-  color: #585858;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 0 4px;
+  background: transparent;
 }
 
 #workspaces button.active {
-  color: @primary;
-}
-
-#workspaces button.urgent {
-  color: #11111b;
-  background: #a6e3a1;
-  border-radius: 10px;
+  color: #cdd6f4;
 }
 
 #workspaces button:hover {
-  background: #010116;
-  color: #cdd6f4;
-  border-color: @primary;
-  border-radius: 10px;
-}
-
-/* Bar modules */
-#window,
-#workspaces,
-#custom-clipboard,
-#menu,
-#submap,
-#idle_inhibitor,
-#pulseaudio,
-#battery,
-#bluetooth,
-#network,
-#power-profiles-daemon,
-#cpu,
-#memory,
-#temperature,
-#keyboard-state,
-#clock,
-#language,
-#custom-input-method,
-#tray,
-#backlight,
-#custom-brightness,
-#custom-updates,
-#custom-notification,
-#custom-power,
-#custom-weather,
-#custom-menu,
-#custom-razerbattery,
-#custom-vpn,
-#custom-lmstudio,
-#wlr-taskbar {
-  background: @background;
-  font-family: "JetBrainsMono Nerd Font";
-  opacity: 1.0;
-  padding: 0px 8px;
-  margin: 0px 0px;
-  margin-top: 2px;
-  border: 0.5px solid @primary;
-  border-radius: 8px;
-}
-
-/* Individual modules */
-#submap {
-  background-color: rgba(10, 10, 10, 0.8);
-  color: rgba(152, 239, 106, 1);
-}
-
-#menu {
-  background-color: @background;
-  border: 1px solid @primary;
-  border-radius: 10px;
-}
-
-#battery {
-  color: #a8ff96;
-  padding-right: 15px;
-}
-
-#power-profiles-daemon.performance {
   color: @primary;
-}
-
-#power-profiles-daemon.balanced {
-  color: #9ca6ff;
-}
-
-#power-profiles-daemon.power-saver {
-  color: #9a7eff;
-}
-
-#temperature.critical {
-  color: #ff5874;
-}
-
-#clock {
-  margin-right: 0px;
-}
-
-#language {
-  margin-left: 0px;
-  margin-right: 5px;
-}
-
-#custom-input-method {
-  margin-left: 0px;
-  margin-right: 5px;
-}
-
-#custom-clipboard {
-  padding-left: 11px;
-  padding-right: 12px;
-}
-
-#custom-updates {
-  padding-right: 15px;
-}
-
-#custom-notification {
-  font-family: "NotoSansMono Nerd Font";
-  font-size: 13px;
-  padding-right: 15px;
+  background: transparent;
+  box-shadow: none;
 }
 
 #custom-power {
-  margin-left: 5px;
-  padding-left: 5px;
+  padding-right: 15px;
 }
 
-#custom-razerbattery {
-  padding-right: 0px;
+#battery.warning {
+  color: #f9e2af;
 }
 
-#network {
-  padding-right: 14px;
-}
-
-#custom-vpn {
-  padding-right: 14px;
-}
-
-#custom-vpn.vpn-up {
-  color: #a8ff96;
-}
-
-#custom-vpn.vpn-down {
-  color: #585858;
-}
-
-/* Not Used CSS Modues, defined with other Modules above */
-#tray {
-  /* Add unique CSS Options */
-}
-
-#workspaces {
-  /* Add unique CSS Options */
-}
-
-#workspaces button.focused {
-  /* Add unique CSS Options */
-}
-
-#custom-weather {
-  /* Add unique CSS Options */
-}
-
-#custom-menu {
-  /* Add unique CSS Options */
-}
-
-#keyboard-state {
-  /* Add unique CSS Options */
-}
-
-#temperature {
-  /* Add unique CSS Options */
-}
-
-#power-profiles-daemon {
-  /* Add unique CSS Options */
-}
-
-#pulseaudio,
-#pulseaudio.microphone {
-  /* Add unique CSS Options */
-}
-
-#custom-brightness {
-  /* Add unique CSS Options */
-}
-
-#bluetooth {
-  /* Add unique CSS Options */
-}
-
-#cpu {
-  /* Add unique CSS Options */
-}
-
-#memory {
-  /* Add unique CSS Options */
-}
-
-#idle_inhibitor {
-  /* Add unique CSS Options */
+#battery.critical {
+  color: #f38ba8;
 }
